@@ -3,6 +3,7 @@
 @implements IDisposable
 @inject ComponentApplicationState ApplicationState
 @page "/"
+<PageTitle>Viewing @((Notes?.Any() ?? false) ? Notes.Count() : 0) notes</PageTitle>
 @if(!string.IsNullOrWhiteSpace(CustomMessage))
 {
     <p>My Custom Message: @CustomMessage</p>
