@@ -3,6 +3,10 @@
 @implements IDisposable
 @inject ComponentApplicationState ApplicationState
 @page "/"
+@if(!string.IsNullOrWhiteSpace(CustomMessage))
+{
+    <p>My Custom Message: @CustomMessage</p>
+}
     <div class="col-6">
         <h2>Enter your note</h2>
         <fieldset>
@@ -37,10 +41,13 @@
     </div>
     @code {
 
-    public IList<Note> Notes { get; set; }
-
+        public IList<Note> Notes { get; set; }
 
         public string NewComment { get; set; }
+
+        [Parameter]
+        [SupplyParameterFromQuery(Name = "Message")]
+        public string CustomMessage { get; set; }
 
         public bool Loading { get; set; }
 
