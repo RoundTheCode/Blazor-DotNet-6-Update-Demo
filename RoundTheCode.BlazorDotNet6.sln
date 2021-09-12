@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoundTheCode.BlazorDotNet6.Wasm", "RoundTheCode.BlazorDotNet6.Wasm\RoundTheCode.BlazorDotNet6.Wasm.csproj", "{B33E4E92-D80E-4FE6-A174-FD47A4CB1934}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoundTheCode.BlazorDotNet6.Host", "RoundTheCode.BlazorDotNet6.Host\RoundTheCode.BlazorDotNet6.Host.csproj", "{2C357D91-EA76-4B1F-95EC-7EF35C3F0C65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B33E4E92-D80E-4FE6-A174-FD47A4CB1934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B33E4E92-D80E-4FE6-A174-FD47A4CB1934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B33E4E92-D80E-4FE6-A174-FD47A4CB1934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B33E4E92-D80E-4FE6-A174-FD47A4CB1934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C357D91-EA76-4B1F-95EC-7EF35C3F0C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C357D91-EA76-4B1F-95EC-7EF35C3F0C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C357D91-EA76-4B1F-95EC-7EF35C3F0C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C357D91-EA76-4B1F-95EC-7EF35C3F0C65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4256AD42-8968-407B-883E-4F215F93FA29}
+	EndGlobalSection
+EndGlobal
