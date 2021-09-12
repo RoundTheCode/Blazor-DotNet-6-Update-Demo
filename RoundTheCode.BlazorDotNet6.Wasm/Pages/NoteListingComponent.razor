@@ -37,7 +37,7 @@
     </div>
     @code {
 
-        public IList<Note> Notes { get; set; }
+    public IList<Note> Notes { get; set; }
 
 
         public string NewComment { get; set; }
@@ -46,12 +46,18 @@
 
         protected override async Task OnInitializedAsync()
         {
-            Loading = true;
-            await Task.Delay(new TimeSpan(0, 0, 2));
-            Notes = new List<Note>();
-            Notes.Add(new Note("Hello there", DateTime.UtcNow));
-            Notes.Add(new Note("How are you doing?", DateTime.UtcNow));
-            Loading = false;
+            ApplicationState.OnPersisting += StoreNotes;
+
+            if (ApplicationState.TryTakeAsJson<Note[]>("Notes", out var storedNotes))
+            {
+                Notes = storedNotes.ToList();
+            }
+            else
+            {
+                Notes = new List<Note>();
+                Notes.Add(new Note("Hello there", DateTime.UtcNow));
+                Notes.Add(new Note("How are you doing?", DateTime.UtcNow));
+            }
 
             await base.OnInitializedAsync();
         }
@@ -75,6 +81,11 @@
         {
             ApplicationState.PersistAsJson("Notes", Notes);
             return Task.CompletedTask;
+        }
+
+        void IDisposable.Dispose()
+        {
+            ApplicationState.OnPersisting -= StoreNotes;
         }
 
     }
