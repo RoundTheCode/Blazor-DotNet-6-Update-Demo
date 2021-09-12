@@ -20,10 +20,17 @@
                     <NoteViewComponent Note="@note" OnDeleteNote="@((e) => OnDeleteNote(e, note))"></NoteViewComponent>
                 }
             </ul>
-        }
+    }
         else
         {
-            <p>You currently do not have any saved notes.</p>
+            if (Loading)
+            {
+                <p>Loading...</p>
+            }
+            else
+            {
+                <p>You currently do not have any saved notes.</p>
+            }
         }
     </div>
     @code {
@@ -33,9 +40,16 @@
 
         public string NewComment { get; set; }
 
+        public bool Loading { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
+            Loading = true;
+            await Task.Delay(new TimeSpan(0, 0, 2));
             Notes = new List<Note>();
+            Notes.Add(new Note("Hello there", DateTime.UtcNow));
+            Notes.Add(new Note("How are you doing?", DateTime.UtcNow));
+            Loading = false;
 
             await base.OnInitializedAsync();
         }
