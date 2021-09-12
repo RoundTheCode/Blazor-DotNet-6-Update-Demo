@@ -1,5 +1,7 @@
 ﻿@using RoundTheCode.BlazorDotNet6.Wasm.Models
 @using System.Diagnostics 
+@implements IDisposable
+@inject ComponentApplicationState ApplicationState
 @page "/"
     <div class="col-6">
         <h2>Enter your note</h2>
@@ -67,6 +69,12 @@
             {
                 Notes.Remove(Notes.First(n => n == note));
             }
+        }
+
+        private Task StoreNotes()
+        {
+            ApplicationState.PersistAsJson("Notes", Notes);
+            return Task.CompletedTask;
         }
 
     }
