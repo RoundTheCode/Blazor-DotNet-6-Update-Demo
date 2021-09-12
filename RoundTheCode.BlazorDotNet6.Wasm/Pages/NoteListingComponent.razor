@@ -24,7 +24,14 @@
             <ul>
                 @foreach (var note in Notes)
                 {
-                    <NoteViewComponent Note="@note" OnDeleteNote="@((e) => OnDeleteNote(e, note))"></NoteViewComponent>
+                    <ErrorBoundary>
+                        <ChildContent>
+                            <NoteViewComponent Note="@note" OnDeleteNote="@((e) => OnDeleteNote(e, note))"></NoteViewComponent>
+                        </ChildContent>
+                        <ErrorContent Context="ex">
+                            <li>Message has the following error: @ex.Message</li>
+						</ErrorContent>
+                    </ErrorBoundary>
                 }
             </ul>
     }

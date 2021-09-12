@@ -26,4 +26,11 @@
     {
         ClassName = string.Empty;
     }
+
+    protected override void OnInitialized()
+    {
+        if (Note?.Message.StartsWith("a") ?? false) {
+            throw new Exception("Note message shouldn't start with a.");
+        }
+    }
 }
