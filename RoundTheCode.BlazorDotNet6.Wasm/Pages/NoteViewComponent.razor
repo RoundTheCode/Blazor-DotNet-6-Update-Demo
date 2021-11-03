@@ -3,7 +3,7 @@
 {
     <li class="@ClassName" @onmouseover="@OnMouseOver" @onmouseout="@OnMouseOut">
         <span>@Note.Message</span>
-        <span>Created: @Note.Created.ToUniversalTime().ToString("ddd d MMM yyyy HH:mm:ss")</span>
+        <span>Created: @Note.Created.ToUniversalTime().ToString("dddd d MMMM yyyy HH:mm:ss")</span>
         <button type="submit" @onclick="OnDeleteNote">Delete</button>
     </li>
 }

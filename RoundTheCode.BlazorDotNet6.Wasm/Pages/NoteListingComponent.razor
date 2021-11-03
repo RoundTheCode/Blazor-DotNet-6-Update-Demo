@@ -1,7 +1,7 @@
 ﻿@using RoundTheCode.BlazorDotNet6.Wasm.Models
 @using System.Diagnostics 
 @implements IDisposable
-@inject ComponentApplicationState ApplicationState
+@inject PersistentComponentState ApplicationState
 @page "/"
 <PageTitle>Viewing @((Notes?.Any() ?? false) ? Notes.Count() : 0) notes</PageTitle>
 @if(!string.IsNullOrWhiteSpace(CustomMessage))
@@ -61,9 +61,9 @@
 
         protected override async Task OnInitializedAsync()
         {
-            ApplicationState.OnPersisting += StoreNotes;
+            ApplicationState.RegisterOnPersisting(() => StoreNotes());
 
-            if (ApplicationState.TryTakeAsJson<Note[]>("Notes", out var storedNotes))
+            if (ApplicationState.TryTakeFromJson<Note[]>("Notes", out var storedNotes))
             {
                 Notes = storedNotes.ToList();
             }
@@ -100,7 +100,6 @@
 
         void IDisposable.Dispose()
         {
-            ApplicationState.OnPersisting -= StoreNotes;
         }
 
     }
